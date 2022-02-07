@@ -17,7 +17,7 @@ SECRET_KEY = os.environ.get(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["cheatsheet.koldfusion.xyz", "127.0.0.1"]
+ALLOWED_HOSTS = ["*"]
 
 # CSRF Stuff
 CSRF_COOKIE_SECURE = True

@@ -17,6 +17,6 @@ jobs:
             username: ${{ github.actor }}
             password: ${{ github.token }}
             registry: docker.pkg.github.com
-            repository: Skelmis/cheatsheet-redirect/cheatsheet-redirect
+            repository: skelmis/cheatsheet-redirect/cheatsheet-redirect
             tags: latest
             build_args: BRANCH=${{ github.ref }},COMMIT=${{ github.sha }}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Redirect Aggregation</title>
+</head>
+<body>
+<h1>A simplistic take on simple redirect aggregation.</h1>
+<hr>
+
+Available routes:
+<ul>
+    {% for route in all_routes %}
+        <li>
+        <a href="?q={{ route }}">
+            {{ route }}
+        </a>
+        </li>
+    {% endfor %}
+
+</ul>
+</body>
+</html>

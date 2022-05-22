@@ -14,6 +14,9 @@ class Redirect(models.Model):
         help_text="Where to redirect this query to.",
         verbose_name="Redirect Url",
     )
+    times_used = models.PositiveIntegerField(
+        default=0, help_text="How many times this redirect has been used."
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     last_modified_at = models.DateTimeField(auto_now=True)
 
@@ -24,4 +27,6 @@ class Redirect(models.Model):
         return repr(self)
 
     def redirect(self) -> HttpResponseRedirect:
+        self.times_used += 1
+        self.save()
         return redirect(self.redirect_url)

@@ -19,6 +19,9 @@ class Redirect(models.Model):
     )
     created_at = models.DateTimeField(auto_now_add=True)
     last_modified_at = models.DateTimeField(auto_now=True)
+    requires_authentication = models.BooleanField(
+        default=False, help_text="Does this entry require auth to view?"
+    )
 
     def __repr__(self):
         return f"<Redirect(query_param='{self.query_param}')>"

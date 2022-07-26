@@ -8,7 +8,7 @@
 <h1>A simplistic take on simple redirect aggregation.</h1>
 <hr>
 
-Available routes:
+Available public routes:
 <ul>
     {% for route in all_routes %}
         <li>
@@ -17,7 +17,20 @@ Available routes:
         </a>
         </li>
     {% endfor %}
-
 </ul>
+
+<hr>
+
+Available authenticated routes:
+<ul>
+    {% for route in auth_routes %}
+        <li>
+        <a href="?q={{ route }}">
+            {{ route }}
+        </a>
+        </li>
+    {% endfor %}
+</ul>
+<hr>
 </body>
 </html>

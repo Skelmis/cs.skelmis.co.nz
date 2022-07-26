@@ -9,6 +9,7 @@ class AdminRedirect(admin.ModelAdmin):
         "query_param",
         "redirect_url",
         "times_used",
+        "requires_authentication",
         "last_modified_at",
         "created_at",
     )

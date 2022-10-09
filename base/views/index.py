@@ -24,4 +24,7 @@ def index_view(request: HttpRequest):
         else:
             context["all_routes"].append(redirect.query_param)
 
+    context["all_routes"] = sorted(context["all_routes"], key=len)
+    context["auth_routes"] = sorted(context["auth_routes"], key=len)
+
     return render(request, "base/index.html", context=context)

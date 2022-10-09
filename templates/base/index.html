@@ -1,37 +1,48 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Redirect Aggregation</title>
+    <link rel="stylesheet" href="{% static 'base/main.css' %}">
 </head>
 <body>
-<h1>A simplistic take on simple redirect aggregation.</h1>
-<hr>
+<div class="pad-left">
+    <div class="bounded">
+        <h1 class="pad-left">A simplistic take on simple redirect aggregation.</h1>
+        <hr>
 
-Available public routes:
-<ul>
-    {% for route in all_routes %}
-        <li>
-        <a href="?q={{ route }}">
-            {{ route }}
-        </a>
-        </li>
-    {% endfor %}
-</ul>
+        <div class="pad-left">
+            Available public routes:
+            <ul>
+                {% for route in all_routes %}
+                    <li>
+                        <a href="?q={{ route }}">
+                            {{ route }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <hr>
 
-<hr>
-
-Available authenticated routes:
-<ul>
-    {% for route in auth_routes %}
-        <li>
-        <a href="?q={{ route }}">
-            {{ route }}
-        </a>
-        </li>
-    {% endfor %}
-</ul>
-<hr>
-<i>{% now "h:i A jS F Y" %} UTC server time</i> | Admin site <a href="/admin/">link</a>
+        <div class="pad-left">
+            Available authenticated routes:
+            <ul>
+                {% for route in auth_routes %}
+                    <li>
+                        <a href="?q={{ route }}">
+                            {{ route }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <hr>
+        <div class="pad-left">
+            Admin site <a href="/admin/">link</a> | <i>{% now "h:i A jS F Y" %} UTC server time</i>
+        </div>
+    </div>
+</div>
 </body>
 </html>

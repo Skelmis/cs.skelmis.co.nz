@@ -1,0 +1,17 @@
+body {
+    font-family: Georgia, serif !important;
+}
+
+.bounded {
+    /*outline: 5px dotted green;*/
+    outline-offset: 4px;
+    max-width: 895px;
+}
+
+.pad-left {
+    padding-left: 10px;
+}
+
+.center {
+    text-align: center;
+}

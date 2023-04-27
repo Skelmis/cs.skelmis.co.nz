@@ -13,6 +13,7 @@ RUN pip install --no-warn-script-location -r /app/requirements.txt
 
 COPY . /app/
 ARG SECRET_KEY="Docker_builds"
+ARG IS_DEV="1"
 
 WORKDIR /app
 

@@ -13,6 +13,19 @@ def index_view(request: HttpRequest):
             if redirect.requires_authentication and not request.user.is_authenticated:
                 raise PermissionDenied
 
+            if "Discordbot" in request.headers.get("User-Agent"):
+                # Provide OG meta tags
+                return render(
+                    request,
+                    "base/og.html",
+                    context={
+                        "url": redirect.redirect_url,
+                        "meta_color": redirect.meta_color,
+                        "meta_title": redirect.meta_title,
+                        "meta_description": redirect.meta_description,
+                    },
+                )
+
             return redirect.redirect()
         except Redirect.DoesNotExist:
             pass

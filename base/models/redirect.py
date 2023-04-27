@@ -1,3 +1,4 @@
+from colorfield.fields import ColorField
 from django.db import models
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
@@ -22,6 +23,15 @@ class Redirect(models.Model):
     requires_authentication = models.BooleanField(
         default=False, help_text="Does this entry require auth to view?"
     )
+    meta_title = models.CharField(
+        max_length=55, blank=True, null=True, help_text="Text for the og:title tag"
+    )
+    meta_description = models.TextField(
+        blank=True,
+        null=True,
+        help_text="Text for the og:description tag",
+    )
+    meta_color = ColorField(default="#808080", help_text="Color for the og:color tag")
 
     def __repr__(self):
         return f"<Redirect(query_param='{self.query_param}')>"

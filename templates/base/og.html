@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Redirect</title>
+    {% if meta_title %}
+    <meta property="og:title" content="{{ meta_title }}"/>
+    {% endif %}
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="{{ url }}"/>
+    {% if meta_description %}
+    <meta property="og:description" content="{{ meta_description }}"/>
+    {% endif %}
+    {% if meta_color %}
+    <meta property="theme-color" content="{{ meta_color }}">
+    {% endif %}
+</head>
+<body>
+This page should only be shown to bots.
+<br>
+Click <a href="{{ url }}">here</a> to navigate to the correct URL.
+</body>
+</html>

@@ -2,11 +2,11 @@ version: "2.2"
 
 services:
   cr_db:
-    image: postgres:12.9
+    image: postgres:14.7
     container_name: "db.cs.skelmis.co.nz"
     restart: always
     ports:
-      - "5432:5432"
+      - "7001:5432"
     environment:
       PGDATA: /var/lib/postgresql/data/pgdata
       POSTGRES_DB: ...
@@ -15,7 +15,7 @@ services:
     volumes:
       - .db:/var/lib/postgresql/data
   cr_web:
-    image: ghcr.io/skelmis/cs.skelmis.co.nz
+    image: ghcr.io/skelmis/cs.skelmis.co.nz:master
     container_name: "cs.skelmis.co.nz"
     restart: always
     ports:
@@ -38,6 +38,7 @@ services:
       POSTGRES_HOST: ...
       POSTGRES_USER: ...
       POSTGRES_PASSWORD: ...
+      POSTGRES_PORT: 7001
       FORCE_POSTGRES: 1
 
 networks:

@@ -11,5 +11,5 @@ proc_name = "cheatsheet_redirect"
 
 worker_tmp_dir = "/dev/shm"
 
-bind = "[::]:8000"
+bind = "[::]:8001"
 workers = multiprocessing.cpu_count() * 2 + 1

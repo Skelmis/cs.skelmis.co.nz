@@ -1,0 +1,46 @@
+version: "2.2"
+
+services:
+  cr_db:
+    image: postgres:12.9
+    container_name: "db.cs.skelmis.co.nz"
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      PGDATA: /var/lib/postgresql/data/pgdata
+      POSTGRES_DB: ...
+      POSTGRES_USER: ...
+      POSTGRES_PASSWORD: ...
+    volumes:
+      - .db:/var/lib/postgresql/data
+  cr_web:
+    image: ghcr.io/skelmis/cs.skelmis.co.nz
+    container_name: "cs.skelmis.co.nz"
+    restart: always
+    ports:
+      - "8000:8000"
+    depends_on:
+      - cr_db
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.cheatsheet_redirect_router.rule: "Host(`cheatsheet.koldfusion.xyz`, `cs.skelmis.co.nz`)"
+      traefik.http.routers.cheatsheet_redirect_router.entrypoints: "websecure"
+      traefik.http.routers.cheatsheet_redirect_router.tls.certresolver: "leresolver"
+      traefik.http.services.cheatsheet_redirect_router.loadbalancer.server.port: "8000"
+    cpus: 1
+    mem_limit: 512m
+    mem_reservation: 256m
+    environment:
+      SECRET_KEY: ...
+      SERVING_DOMAIN: "cheatsheet.koldfusion.xyz,cs.skelmis.co.nz"
+      POSTGRES_NAME: "..."
+      POSTGRES_HOST: ...
+      POSTGRES_USER: ...
+      POSTGRES_PASSWORD: ...
+      FORCE_POSTGRES: 1
+
+networks:
+  default:
+    name: dockerized-portainer_default
+    external: true

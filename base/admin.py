@@ -14,4 +14,4 @@ class AdminRedirect(admin.ModelAdmin):
         "created_at",
     )
     list_filter = ("last_modified_at", "created_at", "requires_authentication")
-    # readonly_fields = ("times_used", "last_modified_at", "created_at")
+    readonly_fields = ("times_used", "last_modified_at", "created_at")

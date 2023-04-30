@@ -18,6 +18,10 @@ class Redirect(models.Model):
     times_used = models.PositiveIntegerField(
         default=0, help_text="How many times this redirect has been used."
     )
+    times_embedded_in_discord = models.PositiveIntegerField(
+        default=0,
+        help_text="How many times discord has requested this URL for embedding on the platform.",
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     last_modified_at = models.DateTimeField(auto_now=True)
     requires_authentication = models.BooleanField(

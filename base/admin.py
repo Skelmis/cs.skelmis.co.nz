@@ -9,9 +9,15 @@ class AdminRedirect(admin.ModelAdmin):
         "query_param",
         "redirect_url",
         "times_used",
+        "times_embedded_in_discord",
         "requires_authentication",
         "last_modified_at",
         "created_at",
     )
     list_filter = ("last_modified_at", "created_at", "requires_authentication")
-    readonly_fields = ("times_used", "last_modified_at", "created_at")
+    readonly_fields = (
+        "times_used",
+        "times_embedded_in_discord",
+        "last_modified_at",
+        "created_at",
+    )

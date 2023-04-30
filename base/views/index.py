@@ -15,6 +15,9 @@ def index_view(request: HttpRequest):
 
             if "Discordbot" in request.headers.get("User-Agent"):
                 # Provide OG meta tags
+                redirect.times_embedded_in_discord += 1
+                redirect.save()
+
                 return render(
                     request,
                     "base/og.html",

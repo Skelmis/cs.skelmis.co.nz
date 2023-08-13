@@ -7,7 +7,6 @@ from base.models import Redirect
 class AdminRedirect(admin.ModelAdmin):
     list_display = (
         "query_param",
-        "redirect_url",
         "times_used",
         "times_embedded_in_discord",
         "requires_authentication",
